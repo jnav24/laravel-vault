@@ -7,7 +7,6 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Spatie\Permission\Models\Role;
 
 class UserSeeder extends Seeder
 {
@@ -16,8 +15,6 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        Role::create(['name' => RoleEnum::SUPER_ADMIN]);
-
         $user = User::factory()->create([
             'name' => 'Super Admin',
             'password' => bcrypt('password'),
