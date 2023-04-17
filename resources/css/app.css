@@ -15,28 +15,37 @@
     /*@apply bg-primary-800 bg-gradient-to-tl from-primary-600 to-primary-700 dark:bg-gray-800 dark:border-gray-700 dark:from-gray-800 dark:to-gray-800;*/
 }
 
+/** separating border between nav groups **/
 .filament-sidebar-nav .border-t {
-    @apply border-primary-600;
+    @apply border-gray-200;
 }
 
+/** side bar nav item **/
 .filament-sidebar-item {
-    @apply text-primary-400;
+    @apply text-primary-600;
 }
 
 .filament-sidebar-item .inline-flex {
     @apply text-primary-50 bg-primary-700 dark:bg-gray-900 dark:text-white;
 }
 
+/** side bar nav item icon active **/
+.filament-sidebar-group .filament-sidebar-item-active svg {
+    @apply text-primary-100;
+}
+
+/** side bar nav item icon **/
 .filament-sidebar-group svg {
-    @apply text-primary-300;
+    @apply text-primary-500;
 }
 
 .filament-main-topbar {
     @apply bg-gray-100;
 }
 
-.tracking-wider {
-    @apply text-sm text-primary-200;
+/** side bar nav group title **/
+.tracking-wider, .filament-sidebar-group button, .filament-sidebar-group button p, .filament-sidebar-group button svg {
+    @apply text-sm text-gray-500 normal-case;
 }
 
 .filament-brand {
