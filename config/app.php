@@ -185,6 +185,9 @@ return [
         /*
          * Package Service Providers...
          */
+        App\Providers\FilamentServiceProvider::class,
+        App\Providers\FilamentBreezyServiceProvider::class,
+        App\Providers\SuperAdminServiceProvider::class,
 
         /*
          * Application Service Providers...
