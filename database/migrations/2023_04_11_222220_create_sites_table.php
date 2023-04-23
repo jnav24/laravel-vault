@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('sites', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->text('description')->nullable();
             $table->string('domain')->unique();
-            $table->string('api_key')->unique();
+            $table->string('app_key')->unique();
+            $table->string('app_secret');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
             $table->softDeletes();
