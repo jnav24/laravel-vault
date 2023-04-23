@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('site_id')->constrained()->cascadeOnDelete();
             $table->string('access_token');
-            $table->string('mfa_secret');
-            $table->string('mfa_recovery_codes');
+            $table->text('mfa_secret');
+            $table->text('mfa_recovery_codes');
             $table->timestamps();
             $table->softDeletes();
         });
