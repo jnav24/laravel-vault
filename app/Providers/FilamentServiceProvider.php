@@ -41,7 +41,10 @@ class FilamentServiceProvider extends ServiceProvider
                                 NavigationItem::make('Dashboard')
                                     ->icon('heroicon-o-home')
                                     ->activeIcon('heroicon-s-home')
-                                    ->isActiveWhen(fn (): bool => request()->routeIs('filament.pages.dashboard'))
+                                    ->isActiveWhen(
+                                        fn (): bool => request()->routeIs('filament.pages.dashboard') ||
+                                            request()->routeIs('filament.resources.sites.*')
+                                    )
                                     ->url(route('filament.pages.dashboard')),
                             ])
                     )
@@ -62,10 +65,11 @@ class FilamentServiceProvider extends ServiceProvider
                                     ->url(route('filament.pages.my-profile'))
                                     ->icon('heroicon-s-user-circle')
                                     ->activeIcon('heroicon-s-user-circle'),
-                                NavigationItem::make('Log out')
-                                    ->url(route('filament.auth.logout'))
-                                    ->icon('heroicon-s-logout')
-                                    ->activeIcon('heroicon-s-logout')
+//                              Unable to change a NavigationItem to a button to do a post.
+//                                NavigationItem::make('Log out')
+//                                    ->url(route('filament.auth.logout'))
+//                                    ->icon('heroicon-s-logout')
+//                                    ->activeIcon('heroicon-s-logout'),
                             ])
                     );
             });
