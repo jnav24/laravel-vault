@@ -6,7 +6,8 @@ use App\Enums\RoleEnum;
 use App\Filament\Resources\RoleResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
-use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Gate;
+use App\Models\Role;
 
 class ListRoles extends ListRecords
 {
@@ -21,6 +22,6 @@ class ListRoles extends ListRecords
 
     public function isTableRecordSelectable(): ?\Closure
     {
-        return fn (Role $role) => $role->name != RoleEnum::SUPER_ADMIN->value;
+        return fn (Role $role) => Gate::allows('delete', $role);
     }
 }
