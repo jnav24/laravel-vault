@@ -14,7 +14,8 @@ use Illuminate\Support\Str;
  * @property int $id
  * @property string $name
  * @property string $domain
- * @property string $api_key
+ * @property string $app_key
+ * @property string $app_secret
  * @property int $user_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -44,8 +45,7 @@ class Site extends Model
         parent::boot();
 
         self::creating(function ($model) {
-            $random = sha1(Str::random(64) . microtime());
-            $model->api_key = Str::limit($random, 255, '');
+            $model->app_key = generateToken();
         });
     }
 
