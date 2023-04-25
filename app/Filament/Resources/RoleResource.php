@@ -4,13 +4,14 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\RoleResource\Pages;
 use App\Filament\Resources\RoleResource\RelationManagers;
+use App\Models\User;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Spatie\Permission\Models\Role;
+use App\Models\Role;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\{TextInput, Select};
 
@@ -19,8 +20,6 @@ class RoleResource extends Resource
     protected static ?string $model = Role::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-
-    protected static ?string $navigationGroup = 'Admin Management';
 
     public static function form(Form $form): Form
     {
@@ -48,11 +47,11 @@ class RoleResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make()
-                    ->visible(function (Role $role) {
-                        // @todo figure out how to hide actions on super admin
-                        return false;
-                    }),
+                Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('settings')
+                    ->label('Settings')
+                    ->url(fn (Role $record): string => route('filament.resources.users.edit', $record))
+                    ->openUrlInNewTab(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
