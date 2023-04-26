@@ -188,6 +188,7 @@ return [
         App\Providers\FilamentServiceProvider::class,
         App\Providers\FilamentBreezyServiceProvider::class,
         App\Providers\SuperAdminServiceProvider::class,
+        App\Providers\MultiFactorProvider::class,
 
         /*
          * Application Service Providers...
