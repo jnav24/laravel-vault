@@ -39,6 +39,13 @@ class UserAccessToken extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = [
+        'site_id',
+        'access_token',
+        'mfa_recovery_codes',
+        'mfa_secret'
+    ];
+
     public function site(): BelongsTo
     {
         return $this->belongsTo(Site::class);
