@@ -48,7 +48,7 @@ services:
     container_name: "${APP_SLUG}-composer"
     volumes:
       - .:/var/www/html
-    command: install
+    command: composer install
     working_dir: /var/www/html
     depends_on:
       - php
