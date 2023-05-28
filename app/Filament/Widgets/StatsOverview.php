@@ -29,7 +29,7 @@ class StatsOverview extends BaseWidget
 
         return [
             Card::make('Total No. of Users', $collect->sum()),
-            Card::make('Site with Most Users', $maxSite['name']),
+            Card::make('Site with Most Users', $maxSite['name'] ?? 'N/A'),
         ];
     }
 }
